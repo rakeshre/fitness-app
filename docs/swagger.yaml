@@ -1,0 +1,1343 @@
+definitions:
+  api.DailyActivity:
+    properties:
+      day:
+        type: integer
+      time:
+        type: number
+    type: object
+  api.checkinActivityResponse:
+    properties:
+      checkin:
+        type: string
+      checkout:
+        type: string
+      employeeid:
+        type: integer
+      id:
+        type: integer
+      locationid:
+        type: integer
+      userid:
+        type: integer
+    type: object
+  api.classCatalogueResponse:
+    properties:
+      courseid:
+        type: integer
+      id:
+        type: integer
+      userid:
+        type: integer
+    type: object
+  api.classResponse:
+    properties:
+      classtype:
+        description: weekly daily or monthly
+        type: string
+      cost:
+        type: integer
+      day:
+        type: string
+      enddate:
+        type: string
+      endtime:
+        type: string
+      id:
+        type: integer
+      instructorname:
+        type: string
+      locationid:
+        type: integer
+      name:
+        type: string
+      regstatus:
+        type: string
+      startdate:
+        type: string
+      starttime:
+        type: string
+    type: object
+  api.createCheckinActivityRequest:
+    properties:
+      checkin:
+        type: string
+      checkout:
+        type: string
+      employeeid:
+        type: integer
+      locationid:
+        type: integer
+      userid:
+        type: integer
+    required:
+    - checkin
+    - checkout
+    - employeeid
+    - locationid
+    - userid
+    type: object
+  api.createCheckinRecordRequest:
+    properties:
+      employeeid:
+        type: integer
+      locationid:
+        type: integer
+      type:
+        type: integer
+      useremail:
+        type: string
+    required:
+    - employeeid
+    - locationid
+    - type
+    - useremail
+    type: object
+  api.createClassCatalogueRequest:
+    properties:
+      courseid:
+        type: integer
+      userid:
+        type: integer
+    required:
+    - courseid
+    - userid
+    type: object
+  api.createClassRequest:
+    properties:
+      cost:
+        type: integer
+      day:
+        type: string
+      enddate:
+        type: string
+      endtime:
+        type: string
+      instructorname:
+        type: string
+      locationid:
+        type: integer
+      name:
+        type: string
+      startdate:
+        type: string
+      starttime:
+        type: string
+    required:
+    - cost
+    - day
+    - enddate
+    - endtime
+    - instructorname
+    - locationid
+    - name
+    - startdate
+    - starttime
+    type: object
+  api.createDeviceRequest:
+    properties:
+      description:
+        type: string
+      status:
+        description: Free,busy,not working
+        type: string
+    required:
+    - description
+    type: object
+  api.createEmployeeRequest:
+    properties:
+      email:
+        type: string
+      locationid:
+        type: integer
+      password:
+        minLength: 6
+        type: string
+      username:
+        type: string
+    required:
+    - email
+    - locationid
+    - password
+    - username
+    type: object
+  api.createLocationRequest:
+    properties:
+      city:
+        type: string
+      state:
+        type: string
+      zipcode:
+        type: string
+    required:
+    - city
+    - state
+    - zipcode
+    type: object
+  api.createNewUserRequest:
+    properties:
+      email:
+        type: string
+      istrail:
+        type: boolean
+      membership:
+        type: integer
+      password:
+        minLength: 6
+        type: string
+      username:
+        type: string
+    required:
+    - email
+    - istrail
+    - membership
+    - password
+    - username
+    type: object
+  api.createUserActivityRecordRequest:
+    properties:
+      deviceid:
+        type: integer
+      locationid:
+        type: integer
+      type:
+        type: integer
+      userid:
+        type: integer
+    required:
+    - deviceid
+    - locationid
+    - type
+    - userid
+    type: object
+  api.createUserActivityRequest:
+    properties:
+      deviceid:
+        type: integer
+      end:
+        type: string
+      start:
+        type: string
+      userid:
+        type: integer
+    required:
+    - deviceid
+    - end
+    - start
+    - userid
+    type: object
+  api.createUserRequest:
+    properties:
+      email:
+        type: string
+      password:
+        minLength: 6
+        type: string
+      username:
+        type: string
+    required:
+    - email
+    - password
+    - username
+    type: object
+  api.dailyUserActivityResponse:
+    properties:
+      activity:
+        items:
+          $ref: '#/definitions/api.DailyActivity'
+        type: array
+      month:
+        type: integer
+    type: object
+  api.deviceResponse:
+    properties:
+      description:
+        type: string
+      id:
+        type: integer
+      status:
+        description: Free,busy,not working
+        type: string
+    type: object
+  api.employeeResponse:
+    properties:
+      created_at:
+        type: string
+      email:
+        type: string
+      employeename:
+        type: string
+      locationid:
+        type: integer
+    type: object
+  api.locationResponse:
+    properties:
+      city:
+        type: string
+      id:
+        type: integer
+      state:
+        type: string
+      zipcode:
+        type: string
+    type: object
+  api.loginRequest:
+    properties:
+      email:
+        type: string
+      password:
+        minLength: 6
+        type: string
+    required:
+    - email
+    - password
+    type: object
+  api.loginResponse:
+    properties:
+      error:
+        type: string
+      object:
+        type: string
+      type:
+        type: string
+    type: object
+  api.userActivityResponse:
+    properties:
+      deviceid:
+        type: integer
+      end:
+        type: string
+      id:
+        type: integer
+      locationid:
+        type: integer
+      start:
+        type: string
+      userid:
+        type: integer
+    type: object
+  api.userResponse:
+    properties:
+      created_at:
+        type: string
+      email:
+        type: string
+      username:
+        type: string
+    type: object
+  db.GetAllClassesOfferedAndAttendeesPerWeekRow:
+    properties:
+      attendees:
+        type: integer
+      classes_offered:
+        type: integer
+      date_trunc:
+        type: integer
+    type: object
+  db.GetAllClassesOfferedAndAttendeesRow:
+    properties:
+      attendees:
+        type: integer
+      classes_offered:
+        type: integer
+      day:
+        type: string
+    type: object
+  db.GetAllTopAttendedClassRow:
+    properties:
+      attendees:
+        type: integer
+      class_id:
+        type: integer
+      class_name:
+        type: string
+    type: object
+  db.GetAverageVisitorsPerHourWeekdaysRow:
+    properties:
+      avg_visitors:
+        type: integer
+      hour:
+        type: number
+    type: object
+  db.GetAverageVisitorsPerHourWeekendsRow:
+    properties:
+      avg_visitors:
+        type: integer
+      hour:
+        type: number
+    type: object
+  db.GetBusiestTimeByHourAndDayOfWeekRow:
+    properties:
+      day_of_week:
+        type: number
+      hour:
+        type: number
+      visits:
+        type: integer
+    type: object
+  db.GetClassRevenueGenerateByLocationRow:
+    properties:
+      location_id:
+        type: integer
+      revenue:
+        type: integer
+    type: object
+  db.GetClassesForEmployeeRow:
+    properties:
+      class_id:
+        type: integer
+      class_name:
+        type: string
+      cost:
+        type: integer
+      enddate:
+        type: string
+      endtime:
+        type: string
+      instructorname:
+        type: string
+      startdate:
+        type: string
+      starttime:
+        type: string
+    type: object
+  db.GetClassesOfferedAndAttendeesPerWeekRow:
+    properties:
+      attendees:
+        type: integer
+      classes_offered:
+        type: integer
+      date_trunc:
+        type: integer
+    type: object
+  db.GetClassesOfferedAndAttendeesRow:
+    properties:
+      attendees:
+        type: integer
+      classes_offered:
+        type: integer
+      day:
+        type: string
+    type: object
+  db.GetClassesRow:
+    properties:
+      class_id:
+        type: integer
+      class_name:
+        type: string
+      cost:
+        type: integer
+      enddate:
+        type: string
+      endtime:
+        type: string
+      enrollment_status: {}
+      instructorname:
+        type: string
+      startdate:
+        type: string
+      starttime:
+        type: string
+    type: object
+  db.GetDailyNewMemberEnrolmentsRow:
+    properties:
+      day:
+        type: integer
+      new_members:
+        type: integer
+    type: object
+  db.GetHoursSpentInGymByDayRow:
+    properties:
+      day:
+        type: integer
+      hours_spent:
+        type: integer
+    type: object
+  db.GetKMostFrequentMembersRow:
+    properties:
+      name:
+        type: string
+      total_visits:
+        type: integer
+      userid:
+        type: integer
+    type: object
+  db.GetMembershipCountsByTypeRow:
+    properties:
+      member_type:
+        type: integer
+      total_members:
+        type: integer
+    type: object
+  db.GetMostPopularHourForClassesOnWeekdaysRow:
+    properties:
+      attendees:
+        type: integer
+      date_part:
+        type: number
+    type: object
+  db.GetMostPopularHourForClassesOnWeekendsRow:
+    properties:
+      attendees:
+        type: integer
+      date_part:
+        type: number
+    type: object
+  db.GetPastWorkoutDataRow:
+    properties:
+      devicetype:
+        type: string
+      totaltimeseconds:
+        type: number
+    type: object
+  db.GetUpcomingClassesRow:
+    properties:
+      class_date:
+        type: string
+      class_id:
+        type: integer
+      class_name:
+        type: string
+      endtime:
+        type: string
+      starttime:
+        type: string
+    type: object
+  db.Location:
+    properties:
+      city:
+        type: string
+      id:
+        type: integer
+      state:
+        type: string
+      zipcode:
+        type: string
+    type: object
+host: 0.0.0.0:8080
+info:
+  contact: {}
+  description: Gym-backend API
+  title: Gym-backend API
+  version: "1.0"
+paths:
+  /allClassesOfferedAndAttendes:
+    get:
+      description: get AllClassesOfferedAndAttendees data in Db.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/db.GetAllClassesOfferedAndAttendeesRow'
+            type: array
+      summary: get AllClassesOfferedAndAttendees
+      tags:
+      - enrolmentanalytics
+  /allClassesOfferedAndAttendesPerWeek:
+    get:
+      description: get AllClassesOfferedAndAttendeesPerWeek data in Db.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/db.GetAllClassesOfferedAndAttendeesPerWeekRow'
+            type: array
+      summary: get AllClassesOfferedAndAttendeesPerWeek
+      tags:
+      - enrolmentanalytics
+  /allTopAttendedClass:
+    get:
+      description: get AllTopAttendedClass data in Db.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/db.GetAllTopAttendedClassRow'
+            type: array
+      summary: get AllTopAttendedClass
+      tags:
+      - enrolmentanalytics
+  /alllocations:
+    get:
+      description: Get ALL locations data from Db.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/db.Location'
+            type: array
+      summary: Get ALL Location From
+      tags:
+      - location
+  /averageVisitorsPerHourWeekdays:
+    get:
+      description: get AverageVisitorsPerHourWeekdays data in Db.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/db.GetAverageVisitorsPerHourWeekdaysRow'
+            type: array
+      summary: get AverageVisitorsPerHourWeekdays
+      tags:
+      - clubusageanalytics
+  /averageVisitorsPerHourWeekends:
+    get:
+      description: get AverageVisitorsPerHourWeekends data in Db.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/db.GetAverageVisitorsPerHourWeekendsRow'
+            type: array
+      summary: get AverageVisitorsPerHourWeekends
+      tags:
+      - clubusageanalytics
+  /busiestTimeByHourAndDayOfWeek:
+    get:
+      description: get BusiestTimeByHourAndDayOfWeek data in Db.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/db.GetBusiestTimeByHourAndDayOfWeekRow'
+            type: array
+      summary: get BusiestTimeByHourAndDayOfWeek
+      tags:
+      - clubusageanalytics
+  /checkinActivity:
+    get:
+      description: Get CheckinActivity from  data in Db.
+      parameters:
+      - in: query
+        name: userid
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.checkinActivityResponse'
+            type: array
+      summary: Get CheckinActivity
+      tags:
+      - checkinActivity
+    post:
+      description: Create CheckinActivity data in Db.
+      parameters:
+      - description: Create Checkin Activity
+        in: body
+        name: device
+        required: true
+        schema:
+          $ref: '#/definitions/api.createCheckinActivityRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.checkinActivityResponse'
+      summary: Create CheckinActivity
+      tags:
+      - checkinActivity
+  /checkinRecord:
+    post:
+      description: Create CheckinActivity data in Db.
+      parameters:
+      - description: Create Checkin Activity Record
+        in: body
+        name: device
+        required: true
+        schema:
+          $ref: '#/definitions/api.createCheckinRecordRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Create CheckinActivity
+      tags:
+      - checkinActivity
+  /checkoutRecord:
+    post:
+      description: Create CheckinActivity data in Db.
+      parameters:
+      - description: Create Checkin Activity Record
+        in: body
+        name: device
+        required: true
+        schema:
+          $ref: '#/definitions/api.createCheckinRecordRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.checkinActivityResponse'
+      summary: Create CheckinActivity
+      tags:
+      - checkinActivity
+  /class:
+    get:
+      description: get Class data in Db.
+      parameters:
+      - in: query
+        name: classid
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.userResponse'
+      summary: get Class
+      tags:
+      - class
+    post:
+      description: Create Class data in Db.
+      parameters:
+      - description: Create class
+        in: body
+        name: class
+        required: true
+        schema:
+          $ref: '#/definitions/api.createClassRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.classResponse'
+      summary: Create Class
+      tags:
+      - class
+  /classCatalogue:
+    get:
+      description: get ClassCatalogue data in Db.
+      parameters:
+      - in: query
+        name: userid
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.classCatalogueResponse'
+            type: array
+      summary: get ClassCatalogue
+      tags:
+      - classCatalogue
+    post:
+      description: Create ClassCatalogue data in Db.
+      parameters:
+      - description: Create ClassCatalogue Activity
+        in: body
+        name: ClassCatalogue
+        required: true
+        schema:
+          $ref: '#/definitions/api.createClassCatalogueRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.classCatalogueResponse'
+      summary: Create ClassCatalogue
+      tags:
+      - classCatalogue
+  /classRevenueGeneratedByLocation:
+    get:
+      description: get ClassRevenueGenerateByLocation data in Db.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/db.GetClassRevenueGenerateByLocationRow'
+            type: array
+      summary: get ClassRevenueGenerateByLocation
+      tags:
+      - revenueanalytics
+  /classesOfferedAndAttendes:
+    get:
+      description: get ClassesOfferedAndAttendees data in Db.
+      parameters:
+      - in: query
+        name: locationid
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/db.GetClassesOfferedAndAttendeesRow'
+            type: array
+      summary: get ClassesOfferedAndAttendees
+      tags:
+      - enrolmentanalytics
+  /classesOfferedAndAttendesPerWeek:
+    get:
+      description: get ClassesOfferedAndAttendees data in Db.
+      parameters:
+      - in: query
+        name: locationid
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/db.GetClassesOfferedAndAttendeesPerWeekRow'
+            type: array
+      summary: get ClassesOfferedAndAttendees
+      tags:
+      - enrolmentanalytics
+  /dailyNewMemberEnrolments:
+    get:
+      description: get GetDailyNewMemberEnrolments data in Db.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/db.GetDailyNewMemberEnrolmentsRow'
+            type: array
+      summary: get GetDailyNewMemberEnrolments
+      tags:
+      - memberretentionanalytics
+  /device:
+    get:
+      description: Get Device data from Db.
+      parameters:
+      - in: query
+        name: deviceid
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.deviceResponse'
+      summary: Get Device From ID
+      tags:
+      - device
+    post:
+      description: Create Device data in Db.
+      parameters:
+      - description: Create Device
+        in: body
+        name: device
+        required: true
+        schema:
+          $ref: '#/definitions/api.createDeviceRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.deviceResponse'
+      summary: Create Device
+      tags:
+      - device
+  /employee:
+    get:
+      description: Get Employee data from Db.
+      parameters:
+      - in: query
+        name: employeename
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.userResponse'
+      summary: Get Employee From EmployeeName
+      tags:
+      - employee
+    post:
+      description: Create Employee data in Db.
+      parameters:
+      - description: Create employee
+        in: body
+        name: employee
+        required: true
+        schema:
+          $ref: '#/definitions/api.createEmployeeRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.employeeResponse'
+      summary: Create Employee
+      tags:
+      - employee
+  /endActivity:
+    post:
+      description: Create CheckinActivity data in Db.
+      parameters:
+      - description: Create Checkin Activity Record
+        in: body
+        name: device
+        required: true
+        schema:
+          $ref: '#/definitions/api.createUserActivityRecordRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.userActivityResponse'
+      summary: Create CheckinActivity
+      tags:
+      - userActivity
+  /getClasses:
+    get:
+      description: get Class data in Db.
+      parameters:
+      - in: query
+        name: day
+        required: true
+        type: string
+      - in: query
+        name: locationid
+        required: true
+        type: integer
+      - in: query
+        name: userid
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/db.GetClassesRow'
+            type: array
+      summary: get Class
+      tags:
+      - class
+  /getClassesForEmployee:
+    get:
+      description: get Class data in Db.
+      parameters:
+      - in: query
+        name: day
+        required: true
+        type: string
+      - in: query
+        name: locationid
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/db.GetClassesForEmployeeRow'
+            type: array
+      summary: get Class
+      tags:
+      - class
+  /getDayWiseUserActivity:
+    get:
+      description: Get Day Wise User Activity data from Db.
+      parameters:
+      - in: query
+        name: userid
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.dailyUserActivityResponse'
+            type: array
+      summary: Get Day wise User Activity From ID
+      tags:
+      - userActivity
+  /getOverallAnalytics:
+    get:
+      description: get ClassRevenueGenerateByLocation data in Db.
+      parameters:
+      - in: query
+        name: type
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: get ClassRevenueGenerateByLocation
+      tags:
+      - overallanalytics
+  /getPastWorkoutData:
+    get:
+      description: Get User Activity data from Db.
+      parameters:
+      - in: query
+        name: interval
+        required: true
+        type: string
+      - in: query
+        name: userid
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/db.GetPastWorkoutDataRow'
+            type: array
+      summary: Get User Activity From ID
+      tags:
+      - userActivity
+  /getUpcomingClasses:
+    get:
+      description: get Class data in Db.
+      parameters:
+      - in: query
+        name: userid
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/db.GetUpcomingClassesRow'
+            type: array
+      summary: get Class
+      tags:
+      - class
+  /hoursSpentInGymByDay:
+    get:
+      description: get ClassesOfferedAndAttendees data in Db.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/db.GetHoursSpentInGymByDayRow'
+            type: array
+      summary: get ClassesOfferedAndAttendees
+      tags:
+      - clubusageanalytics
+  /kMostFrequentMembers:
+    get:
+      description: get GetKMostFrequentMembers data in Db.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/db.GetKMostFrequentMembersRow'
+            type: array
+      summary: get GetKMostFrequentMembers
+      tags:
+      - memberretentionanalytics
+  /location:
+    get:
+      description: Get User data from Db.
+      parameters:
+      - in: query
+        name: locationid
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.locationResponse'
+      summary: Get Location From ID
+      tags:
+      - location
+    post:
+      description: Create Location data in Db.
+      parameters:
+      - description: Create Location
+        in: body
+        name: users
+        required: true
+        schema:
+          $ref: '#/definitions/api.createLocationRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.locationResponse'
+      summary: Create Location
+      tags:
+      - location
+  /login:
+    post:
+      description: Validate login Request and return corresponding object.
+      parameters:
+      - description: Valid User/Employee
+        in: body
+        name: login
+        required: true
+        schema:
+          $ref: '#/definitions/api.loginRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.loginResponse'
+      summary: Validate login Request
+      tags:
+      - auth
+  /membershipCountsByType:
+    get:
+      description: get GetMembershipCountsByType data in Db.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/db.GetMembershipCountsByTypeRow'
+            type: array
+      summary: get GetMembershipCountsByType
+      tags:
+      - memberretentionanalytics
+  /mostPopularHourForClassesOnWeekdays:
+    get:
+      description: get MostPopularHourForClassesOnWeekdays data in Db.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/db.GetMostPopularHourForClassesOnWeekdaysRow'
+            type: array
+      summary: get MostPopularHourForClassesOnWeekdays
+      tags:
+      - enrolmentanalytics
+  /mostPopularHourForClassesOnWeekends:
+    get:
+      description: get MostPopularHourForClassesOnWeekends data in Db.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/db.GetMostPopularHourForClassesOnWeekendsRow'
+            type: array
+      summary: get MostPopularHourForClassesOnWeekends
+      tags:
+      - enrolmentAnalytics
+  /revenueGenerateByMemberships:
+    get:
+      description: get RevenueGenerateByMemberships data in Db.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: integer
+      summary: get RevenueGenerateByMemberships
+      tags:
+      - revenueanalytics
+  /startActivity:
+    post:
+      description: Create CheckinActivity data in Db.
+      parameters:
+      - description: Create Checkin Activity Record
+        in: body
+        name: device
+        required: true
+        schema:
+          $ref: '#/definitions/api.createUserActivityRecordRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Create CheckinActivity
+      tags:
+      - userActivity
+  /userActivity:
+    get:
+      description: Get User Activity data from Db.
+      parameters:
+      - in: query
+        name: userid
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.userActivityResponse'
+            type: array
+      summary: Get User Activity From ID
+      tags:
+      - userActivity
+    post:
+      description: Create UserActivity data in Db.
+      parameters:
+      - description: Create Device
+        in: body
+        name: device
+        required: true
+        schema:
+          $ref: '#/definitions/api.createUserActivityRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.userActivityResponse'
+      summary: Create UserActivity
+      tags:
+      - userActivity
+  /users:
+    get:
+      description: Get User data from Db.
+      parameters:
+      - in: query
+        name: username
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.userResponse'
+      summary: Get User From UserName
+      tags:
+      - user
+    post:
+      description: Create User data in Db.
+      parameters:
+      - description: Create user
+        in: body
+        name: users
+        required: true
+        schema:
+          $ref: '#/definitions/api.createUserRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.userResponse'
+      summary: Create User
+      tags:
+      - user
+  /usersV2:
+    post:
+      description: Create User data in Db.
+      parameters:
+      - description: Create user
+        in: body
+        name: users
+        required: true
+        schema:
+          $ref: '#/definitions/api.createNewUserRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.userResponse'
+      summary: Create User
+      tags:
+      - user
+swagger: "2.0"

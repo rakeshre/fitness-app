@@ -1,0 +1,2049 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Gym-backend API",
+        "title": "Gym-backend API",
+        "contact": {},
+        "version": "1.0"
+    },
+    "host": "0.0.0.0:8080",
+    "paths": {
+        "/allClassesOfferedAndAttendes": {
+            "get": {
+                "description": "get AllClassesOfferedAndAttendees data in Db.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "enrolmentanalytics"
+                ],
+                "summary": "get AllClassesOfferedAndAttendees",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/db.GetAllClassesOfferedAndAttendeesRow"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/allClassesOfferedAndAttendesPerWeek": {
+            "get": {
+                "description": "get AllClassesOfferedAndAttendeesPerWeek data in Db.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "enrolmentanalytics"
+                ],
+                "summary": "get AllClassesOfferedAndAttendeesPerWeek",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/db.GetAllClassesOfferedAndAttendeesPerWeekRow"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/allTopAttendedClass": {
+            "get": {
+                "description": "get AllTopAttendedClass data in Db.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "enrolmentanalytics"
+                ],
+                "summary": "get AllTopAttendedClass",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/db.GetAllTopAttendedClassRow"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/alllocations": {
+            "get": {
+                "description": "Get ALL locations data from Db.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "location"
+                ],
+                "summary": "Get ALL Location From",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/db.Location"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/averageVisitorsPerHourWeekdays": {
+            "get": {
+                "description": "get AverageVisitorsPerHourWeekdays data in Db.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "clubusageanalytics"
+                ],
+                "summary": "get AverageVisitorsPerHourWeekdays",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/db.GetAverageVisitorsPerHourWeekdaysRow"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/averageVisitorsPerHourWeekends": {
+            "get": {
+                "description": "get AverageVisitorsPerHourWeekends data in Db.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "clubusageanalytics"
+                ],
+                "summary": "get AverageVisitorsPerHourWeekends",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/db.GetAverageVisitorsPerHourWeekendsRow"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/busiestTimeByHourAndDayOfWeek": {
+            "get": {
+                "description": "get BusiestTimeByHourAndDayOfWeek data in Db.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "clubusageanalytics"
+                ],
+                "summary": "get BusiestTimeByHourAndDayOfWeek",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/db.GetBusiestTimeByHourAndDayOfWeekRow"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/checkinActivity": {
+            "get": {
+                "description": "Get CheckinActivity from  data in Db.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "checkinActivity"
+                ],
+                "summary": "Get CheckinActivity",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "userid",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/api.checkinActivityResponse"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Create CheckinActivity data in Db.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "checkinActivity"
+                ],
+                "summary": "Create CheckinActivity",
+                "parameters": [
+                    {
+                        "description": "Create Checkin Activity",
+                        "name": "device",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.createCheckinActivityRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.checkinActivityResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/checkinRecord": {
+            "post": {
+                "description": "Create CheckinActivity data in Db.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "checkinActivity"
+                ],
+                "summary": "Create CheckinActivity",
+                "parameters": [
+                    {
+                        "description": "Create Checkin Activity Record",
+                        "name": "device",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.createCheckinRecordRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/checkoutRecord": {
+            "post": {
+                "description": "Create CheckinActivity data in Db.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "checkinActivity"
+                ],
+                "summary": "Create CheckinActivity",
+                "parameters": [
+                    {
+                        "description": "Create Checkin Activity Record",
+                        "name": "device",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.createCheckinRecordRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.checkinActivityResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/class": {
+            "get": {
+                "description": "get Class data in Db.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "class"
+                ],
+                "summary": "get Class",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "classid",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.userResponse"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Create Class data in Db.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "class"
+                ],
+                "summary": "Create Class",
+                "parameters": [
+                    {
+                        "description": "Create class",
+                        "name": "class",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.createClassRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.classResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/classCatalogue": {
+            "get": {
+                "description": "get ClassCatalogue data in Db.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "classCatalogue"
+                ],
+                "summary": "get ClassCatalogue",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "userid",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/api.classCatalogueResponse"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Create ClassCatalogue data in Db.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "classCatalogue"
+                ],
+                "summary": "Create ClassCatalogue",
+                "parameters": [
+                    {
+                        "description": "Create ClassCatalogue Activity",
+                        "name": "ClassCatalogue",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.createClassCatalogueRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.classCatalogueResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/classRevenueGeneratedByLocation": {
+            "get": {
+                "description": "get ClassRevenueGenerateByLocation data in Db.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "revenueanalytics"
+                ],
+                "summary": "get ClassRevenueGenerateByLocation",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/db.GetClassRevenueGenerateByLocationRow"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/classesOfferedAndAttendes": {
+            "get": {
+                "description": "get ClassesOfferedAndAttendees data in Db.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "enrolmentanalytics"
+                ],
+                "summary": "get ClassesOfferedAndAttendees",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "locationid",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/db.GetClassesOfferedAndAttendeesRow"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/classesOfferedAndAttendesPerWeek": {
+            "get": {
+                "description": "get ClassesOfferedAndAttendees data in Db.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "enrolmentanalytics"
+                ],
+                "summary": "get ClassesOfferedAndAttendees",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "locationid",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/db.GetClassesOfferedAndAttendeesPerWeekRow"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/dailyNewMemberEnrolments": {
+            "get": {
+                "description": "get GetDailyNewMemberEnrolments data in Db.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "memberretentionanalytics"
+                ],
+                "summary": "get GetDailyNewMemberEnrolments",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/db.GetDailyNewMemberEnrolmentsRow"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/device": {
+            "get": {
+                "description": "Get Device data from Db.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "device"
+                ],
+                "summary": "Get Device From ID",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "deviceid",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.deviceResponse"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Create Device data in Db.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "device"
+                ],
+                "summary": "Create Device",
+                "parameters": [
+                    {
+                        "description": "Create Device",
+                        "name": "device",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.createDeviceRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.deviceResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/employee": {
+            "get": {
+                "description": "Get Employee data from Db.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "employee"
+                ],
+                "summary": "Get Employee From EmployeeName",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "employeename",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.userResponse"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Create Employee data in Db.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "employee"
+                ],
+                "summary": "Create Employee",
+                "parameters": [
+                    {
+                        "description": "Create employee",
+                        "name": "employee",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.createEmployeeRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.employeeResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/endActivity": {
+            "post": {
+                "description": "Create CheckinActivity data in Db.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "userActivity"
+                ],
+                "summary": "Create CheckinActivity",
+                "parameters": [
+                    {
+                        "description": "Create Checkin Activity Record",
+                        "name": "device",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.createUserActivityRecordRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.userActivityResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/getClasses": {
+            "get": {
+                "description": "get Class data in Db.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "class"
+                ],
+                "summary": "get Class",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "day",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "locationid",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "userid",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/db.GetClassesRow"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/getClassesForEmployee": {
+            "get": {
+                "description": "get Class data in Db.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "class"
+                ],
+                "summary": "get Class",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "day",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "locationid",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/db.GetClassesForEmployeeRow"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/getDayWiseUserActivity": {
+            "get": {
+                "description": "Get Day Wise User Activity data from Db.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "userActivity"
+                ],
+                "summary": "Get Day wise User Activity From ID",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "userid",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/api.dailyUserActivityResponse"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/getOverallAnalytics": {
+            "get": {
+                "description": "get ClassRevenueGenerateByLocation data in Db.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "overallanalytics"
+                ],
+                "summary": "get ClassRevenueGenerateByLocation",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "type",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/getPastWorkoutData": {
+            "get": {
+                "description": "Get User Activity data from Db.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "userActivity"
+                ],
+                "summary": "Get User Activity From ID",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "interval",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "userid",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/db.GetPastWorkoutDataRow"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/getUpcomingClasses": {
+            "get": {
+                "description": "get Class data in Db.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "class"
+                ],
+                "summary": "get Class",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "userid",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/db.GetUpcomingClassesRow"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/hoursSpentInGymByDay": {
+            "get": {
+                "description": "get ClassesOfferedAndAttendees data in Db.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "clubusageanalytics"
+                ],
+                "summary": "get ClassesOfferedAndAttendees",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/db.GetHoursSpentInGymByDayRow"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/kMostFrequentMembers": {
+            "get": {
+                "description": "get GetKMostFrequentMembers data in Db.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "memberretentionanalytics"
+                ],
+                "summary": "get GetKMostFrequentMembers",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/db.GetKMostFrequentMembersRow"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/location": {
+            "get": {
+                "description": "Get User data from Db.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "location"
+                ],
+                "summary": "Get Location From ID",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "locationid",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.locationResponse"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Create Location data in Db.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "location"
+                ],
+                "summary": "Create Location",
+                "parameters": [
+                    {
+                        "description": "Create Location",
+                        "name": "users",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.createLocationRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.locationResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/login": {
+            "post": {
+                "description": "Validate login Request and return corresponding object.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Validate login Request",
+                "parameters": [
+                    {
+                        "description": "Valid User/Employee",
+                        "name": "login",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.loginRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.loginResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/membershipCountsByType": {
+            "get": {
+                "description": "get GetMembershipCountsByType data in Db.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "memberretentionanalytics"
+                ],
+                "summary": "get GetMembershipCountsByType",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/db.GetMembershipCountsByTypeRow"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/mostPopularHourForClassesOnWeekdays": {
+            "get": {
+                "description": "get MostPopularHourForClassesOnWeekdays data in Db.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "enrolmentanalytics"
+                ],
+                "summary": "get MostPopularHourForClassesOnWeekdays",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/db.GetMostPopularHourForClassesOnWeekdaysRow"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/mostPopularHourForClassesOnWeekends": {
+            "get": {
+                "description": "get MostPopularHourForClassesOnWeekends data in Db.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "enrolmentAnalytics"
+                ],
+                "summary": "get MostPopularHourForClassesOnWeekends",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/db.GetMostPopularHourForClassesOnWeekendsRow"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/revenueGenerateByMemberships": {
+            "get": {
+                "description": "get RevenueGenerateByMemberships data in Db.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "revenueanalytics"
+                ],
+                "summary": "get RevenueGenerateByMemberships",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "/startActivity": {
+            "post": {
+                "description": "Create CheckinActivity data in Db.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "userActivity"
+                ],
+                "summary": "Create CheckinActivity",
+                "parameters": [
+                    {
+                        "description": "Create Checkin Activity Record",
+                        "name": "device",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.createUserActivityRecordRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/userActivity": {
+            "get": {
+                "description": "Get User Activity data from Db.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "userActivity"
+                ],
+                "summary": "Get User Activity From ID",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "userid",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/api.userActivityResponse"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Create UserActivity data in Db.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "userActivity"
+                ],
+                "summary": "Create UserActivity",
+                "parameters": [
+                    {
+                        "description": "Create Device",
+                        "name": "device",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.createUserActivityRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.userActivityResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/users": {
+            "get": {
+                "description": "Get User data from Db.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "user"
+                ],
+                "summary": "Get User From UserName",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "username",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.userResponse"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Create User data in Db.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "user"
+                ],
+                "summary": "Create User",
+                "parameters": [
+                    {
+                        "description": "Create user",
+                        "name": "users",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.createUserRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.userResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/usersV2": {
+            "post": {
+                "description": "Create User data in Db.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "user"
+                ],
+                "summary": "Create User",
+                "parameters": [
+                    {
+                        "description": "Create user",
+                        "name": "users",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.createNewUserRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.userResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "api.DailyActivity": {
+            "type": "object",
+            "properties": {
+                "day": {
+                    "type": "integer"
+                },
+                "time": {
+                    "type": "number"
+                }
+            }
+        },
+        "api.checkinActivityResponse": {
+            "type": "object",
+            "properties": {
+                "checkin": {
+                    "type": "string"
+                },
+                "checkout": {
+                    "type": "string"
+                },
+                "employeeid": {
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "locationid": {
+                    "type": "integer"
+                },
+                "userid": {
+                    "type": "integer"
+                }
+            }
+        },
+        "api.classCatalogueResponse": {
+            "type": "object",
+            "properties": {
+                "courseid": {
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "userid": {
+                    "type": "integer"
+                }
+            }
+        },
+        "api.classResponse": {
+            "type": "object",
+            "properties": {
+                "classtype": {
+                    "description": "weekly daily or monthly",
+                    "type": "string"
+                },
+                "cost": {
+                    "type": "integer"
+                },
+                "day": {
+                    "type": "string"
+                },
+                "enddate": {
+                    "type": "string"
+                },
+                "endtime": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "instructorname": {
+                    "type": "string"
+                },
+                "locationid": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "regstatus": {
+                    "type": "string"
+                },
+                "startdate": {
+                    "type": "string"
+                },
+                "starttime": {
+                    "type": "string"
+                }
+            }
+        },
+        "api.createCheckinActivityRequest": {
+            "type": "object",
+            "required": [
+                "checkin",
+                "checkout",
+                "employeeid",
+                "locationid",
+                "userid"
+            ],
+            "properties": {
+                "checkin": {
+                    "type": "string"
+                },
+                "checkout": {
+                    "type": "string"
+                },
+                "employeeid": {
+                    "type": "integer"
+                },
+                "locationid": {
+                    "type": "integer"
+                },
+                "userid": {
+                    "type": "integer"
+                }
+            }
+        },
+        "api.createCheckinRecordRequest": {
+            "type": "object",
+            "required": [
+                "employeeid",
+                "locationid",
+                "type",
+                "useremail"
+            ],
+            "properties": {
+                "employeeid": {
+                    "type": "integer"
+                },
+                "locationid": {
+                    "type": "integer"
+                },
+                "type": {
+                    "type": "integer"
+                },
+                "useremail": {
+                    "type": "string"
+                }
+            }
+        },
+        "api.createClassCatalogueRequest": {
+            "type": "object",
+            "required": [
+                "courseid",
+                "userid"
+            ],
+            "properties": {
+                "courseid": {
+                    "type": "integer"
+                },
+                "userid": {
+                    "type": "integer"
+                }
+            }
+        },
+        "api.createClassRequest": {
+            "type": "object",
+            "required": [
+                "cost",
+                "day",
+                "enddate",
+                "endtime",
+                "instructorname",
+                "locationid",
+                "name",
+                "startdate",
+                "starttime"
+            ],
+            "properties": {
+                "cost": {
+                    "type": "integer"
+                },
+                "day": {
+                    "type": "string"
+                },
+                "enddate": {
+                    "type": "string"
+                },
+                "endtime": {
+                    "type": "string"
+                },
+                "instructorname": {
+                    "type": "string"
+                },
+                "locationid": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "startdate": {
+                    "type": "string"
+                },
+                "starttime": {
+                    "type": "string"
+                }
+            }
+        },
+        "api.createDeviceRequest": {
+            "type": "object",
+            "required": [
+                "description"
+            ],
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "status": {
+                    "description": "Free,busy,not working",
+                    "type": "string"
+                }
+            }
+        },
+        "api.createEmployeeRequest": {
+            "type": "object",
+            "required": [
+                "email",
+                "locationid",
+                "password",
+                "username"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "locationid": {
+                    "type": "integer"
+                },
+                "password": {
+                    "type": "string",
+                    "minLength": 6
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "api.createLocationRequest": {
+            "type": "object",
+            "required": [
+                "city",
+                "state",
+                "zipcode"
+            ],
+            "properties": {
+                "city": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "string"
+                },
+                "zipcode": {
+                    "type": "string"
+                }
+            }
+        },
+        "api.createNewUserRequest": {
+            "type": "object",
+            "required": [
+                "email",
+                "istrail",
+                "membership",
+                "password",
+                "username"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "istrail": {
+                    "type": "boolean"
+                },
+                "membership": {
+                    "type": "integer"
+                },
+                "password": {
+                    "type": "string",
+                    "minLength": 6
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "api.createUserActivityRecordRequest": {
+            "type": "object",
+            "required": [
+                "deviceid",
+                "locationid",
+                "type",
+                "userid"
+            ],
+            "properties": {
+                "deviceid": {
+                    "type": "integer"
+                },
+                "locationid": {
+                    "type": "integer"
+                },
+                "type": {
+                    "type": "integer"
+                },
+                "userid": {
+                    "type": "integer"
+                }
+            }
+        },
+        "api.createUserActivityRequest": {
+            "type": "object",
+            "required": [
+                "deviceid",
+                "end",
+                "start",
+                "userid"
+            ],
+            "properties": {
+                "deviceid": {
+                    "type": "integer"
+                },
+                "end": {
+                    "type": "string"
+                },
+                "start": {
+                    "type": "string"
+                },
+                "userid": {
+                    "type": "integer"
+                }
+            }
+        },
+        "api.createUserRequest": {
+            "type": "object",
+            "required": [
+                "email",
+                "password",
+                "username"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string",
+                    "minLength": 6
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "api.dailyUserActivityResponse": {
+            "type": "object",
+            "properties": {
+                "activity": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/api.DailyActivity"
+                    }
+                },
+                "month": {
+                    "type": "integer"
+                }
+            }
+        },
+        "api.deviceResponse": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "status": {
+                    "description": "Free,busy,not working",
+                    "type": "string"
+                }
+            }
+        },
+        "api.employeeResponse": {
+            "type": "object",
+            "properties": {
+                "created_at": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "employeename": {
+                    "type": "string"
+                },
+                "locationid": {
+                    "type": "integer"
+                }
+            }
+        },
+        "api.locationResponse": {
+            "type": "object",
+            "properties": {
+                "city": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "state": {
+                    "type": "string"
+                },
+                "zipcode": {
+                    "type": "string"
+                }
+            }
+        },
+        "api.loginRequest": {
+            "type": "object",
+            "required": [
+                "email",
+                "password"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string",
+                    "minLength": 6
+                }
+            }
+        },
+        "api.loginResponse": {
+            "type": "object",
+            "properties": {
+                "error": {
+                    "type": "string"
+                },
+                "object": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
+        "api.userActivityResponse": {
+            "type": "object",
+            "properties": {
+                "deviceid": {
+                    "type": "integer"
+                },
+                "end": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "locationid": {
+                    "type": "integer"
+                },
+                "start": {
+                    "type": "string"
+                },
+                "userid": {
+                    "type": "integer"
+                }
+            }
+        },
+        "api.userResponse": {
+            "type": "object",
+            "properties": {
+                "created_at": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "db.GetAllClassesOfferedAndAttendeesPerWeekRow": {
+            "type": "object",
+            "properties": {
+                "attendees": {
+                    "type": "integer"
+                },
+                "classes_offered": {
+                    "type": "integer"
+                },
+                "date_trunc": {
+                    "type": "integer"
+                }
+            }
+        },
+        "db.GetAllClassesOfferedAndAttendeesRow": {
+            "type": "object",
+            "properties": {
+                "attendees": {
+                    "type": "integer"
+                },
+                "classes_offered": {
+                    "type": "integer"
+                },
+                "day": {
+                    "type": "string"
+                }
+            }
+        },
+        "db.GetAllTopAttendedClassRow": {
+            "type": "object",
+            "properties": {
+                "attendees": {
+                    "type": "integer"
+                },
+                "class_id": {
+                    "type": "integer"
+                },
+                "class_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "db.GetAverageVisitorsPerHourWeekdaysRow": {
+            "type": "object",
+            "properties": {
+                "avg_visitors": {
+                    "type": "integer"
+                },
+                "hour": {
+                    "type": "number"
+                }
+            }
+        },
+        "db.GetAverageVisitorsPerHourWeekendsRow": {
+            "type": "object",
+            "properties": {
+                "avg_visitors": {
+                    "type": "integer"
+                },
+                "hour": {
+                    "type": "number"
+                }
+            }
+        },
+        "db.GetBusiestTimeByHourAndDayOfWeekRow": {
+            "type": "object",
+            "properties": {
+                "day_of_week": {
+                    "type": "number"
+                },
+                "hour": {
+                    "type": "number"
+                },
+                "visits": {
+                    "type": "integer"
+                }
+            }
+        },
+        "db.GetClassRevenueGenerateByLocationRow": {
+            "type": "object",
+            "properties": {
+                "location_id": {
+                    "type": "integer"
+                },
+                "revenue": {
+                    "type": "integer"
+                }
+            }
+        },
+        "db.GetClassesForEmployeeRow": {
+            "type": "object",
+            "properties": {
+                "class_id": {
+                    "type": "integer"
+                },
+                "class_name": {
+                    "type": "string"
+                },
+                "cost": {
+                    "type": "integer"
+                },
+                "enddate": {
+                    "type": "string"
+                },
+                "endtime": {
+                    "type": "string"
+                },
+                "instructorname": {
+                    "type": "string"
+                },
+                "startdate": {
+                    "type": "string"
+                },
+                "starttime": {
+                    "type": "string"
+                }
+            }
+        },
+        "db.GetClassesOfferedAndAttendeesPerWeekRow": {
+            "type": "object",
+            "properties": {
+                "attendees": {
+                    "type": "integer"
+                },
+                "classes_offered": {
+                    "type": "integer"
+                },
+                "date_trunc": {
+                    "type": "integer"
+                }
+            }
+        },
+        "db.GetClassesOfferedAndAttendeesRow": {
+            "type": "object",
+            "properties": {
+                "attendees": {
+                    "type": "integer"
+                },
+                "classes_offered": {
+                    "type": "integer"
+                },
+                "day": {
+                    "type": "string"
+                }
+            }
+        },
+        "db.GetClassesRow": {
+            "type": "object",
+            "properties": {
+                "class_id": {
+                    "type": "integer"
+                },
+                "class_name": {
+                    "type": "string"
+                },
+                "cost": {
+                    "type": "integer"
+                },
+                "enddate": {
+                    "type": "string"
+                },
+                "endtime": {
+                    "type": "string"
+                },
+                "enrollment_status": {},
+                "instructorname": {
+                    "type": "string"
+                },
+                "startdate": {
+                    "type": "string"
+                },
+                "starttime": {
+                    "type": "string"
+                }
+            }
+        },
+        "db.GetDailyNewMemberEnrolmentsRow": {
+            "type": "object",
+            "properties": {
+                "day": {
+                    "type": "integer"
+                },
+                "new_members": {
+                    "type": "integer"
+                }
+            }
+        },
+        "db.GetHoursSpentInGymByDayRow": {
+            "type": "object",
+            "properties": {
+                "day": {
+                    "type": "integer"
+                },
+                "hours_spent": {
+                    "type": "integer"
+                }
+            }
+        },
+        "db.GetKMostFrequentMembersRow": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "total_visits": {
+                    "type": "integer"
+                },
+                "userid": {
+                    "type": "integer"
+                }
+            }
+        },
+        "db.GetMembershipCountsByTypeRow": {
+            "type": "object",
+            "properties": {
+                "member_type": {
+                    "type": "integer"
+                },
+                "total_members": {
+                    "type": "integer"
+                }
+            }
+        },
+        "db.GetMostPopularHourForClassesOnWeekdaysRow": {
+            "type": "object",
+            "properties": {
+                "attendees": {
+                    "type": "integer"
+                },
+                "date_part": {
+                    "type": "number"
+                }
+            }
+        },
+        "db.GetMostPopularHourForClassesOnWeekendsRow": {
+            "type": "object",
+            "properties": {
+                "attendees": {
+                    "type": "integer"
+                },
+                "date_part": {
+                    "type": "number"
+                }
+            }
+        },
+        "db.GetPastWorkoutDataRow": {
+            "type": "object",
+            "properties": {
+                "devicetype": {
+                    "type": "string"
+                },
+                "totaltimeseconds": {
+                    "type": "number"
+                }
+            }
+        },
+        "db.GetUpcomingClassesRow": {
+            "type": "object",
+            "properties": {
+                "class_date": {
+                    "type": "string"
+                },
+                "class_id": {
+                    "type": "integer"
+                },
+                "class_name": {
+                    "type": "string"
+                },
+                "endtime": {
+                    "type": "string"
+                },
+                "starttime": {
+                    "type": "string"
+                }
+            }
+        },
+        "db.Location": {
+            "type": "object",
+            "properties": {
+                "city": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "state": {
+                    "type": "string"
+                },
+                "zipcode": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
