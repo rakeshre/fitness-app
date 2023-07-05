@@ -1,9 +1,5 @@
 # Gym-backend
 
-<a href="https://github.com/JaswanthKarangula/Gym-backend/actions">
-      <img alt="Tests Passing" src="https://github.com/JaswanthKarangula/Go-Banking/actions/workflows/test.yml/badge.svg?event=push" />
-    </a>
-
 ## 1 Creating a Database
 
 
